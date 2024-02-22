@@ -128,6 +128,10 @@
     font-size: 12px;
   }
 
+  @media (min-width: 600px) {
+    div.menu-area {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }}
   @media (min-width: 800px) {
     div.menu-area {
       grid-template-columns: repeat(4, minmax(0, 1fr));
