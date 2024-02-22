@@ -2,6 +2,9 @@
     export let image1: string;
     export let name2: string;
     export let description3: string;
+
+
+    
 </script>
 
 <div class="menu-tile">

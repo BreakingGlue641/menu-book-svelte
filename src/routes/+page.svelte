@@ -1,5 +1,28 @@
 <script>
   import MenuTile from '../lib/component/MenuTile.svelte';
+  const  menus = [
+    {
+      image1: "https://images.immediate.co.uk/production/volatile/sites/30/2014/05/Epic-summer-salad-hub-2646e6e.jpg?resize=960%2C503",
+      name2: "Avocado Pesto Salad" ,
+      description3: "“Home-grown vegetables with loads of avocado, topped with mouthwatering pesto salad”",
+    },
+    {
+      image1: "https://www.recipetineats.com/wp-content/uploads/2023/05/Garlic-cheese-pizza_9.jpg",
+      name2: "Triple Cheese Pizza" ,
+      description3: "“Indulge yourself in this simple yet delicious delicacy”",
+    },
+    {
+      image1: "https://images.theconversation.com/files/525691/original/file-20230511-19-w9pz4k.jpg?ixlib=rb-1.1.0&rect=5%2C2%2C1905%2C1276&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip",
+      name2: "Seasonal Wine",
+      description3: "“A great meal becomes perfect when combined with a good wine”",
+    },
+    {
+      image1: "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_512,h_512/https://www.adityabirlacapital.com/healthinsurance/active-together/wp-content/uploads/2019/12/How-Are-Espressos-Good-For-Health_blog-1.gif",
+      name2: "Coffee",
+      description3: "“The best coffee you can have from the land of Indonesia”",
+    },
+  ];
+
 </script>
 
 <head>
@@ -10,9 +33,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
-
-
-<body>
   <div class="appbar">Kongkow Cafe</div>
   <div class="hero"><img src="https://cdn.themistakenman.com/wp-content/uploads/2022/08/fast-food-business.webp"
       alt="hero"></div>
@@ -22,31 +42,12 @@
     <div class="price-note">All prices are in thousand rupiah</div>
   </div>
   <div class="menu-area">
-    <div class="menu-row">
-      <MenuTile 
-      image1={"https://images.immediate.co.uk/production/volatile/sites/30/2014/05/Epic-summer-salad-hub-2646e6e.jpg?resize=960%2C503"} 
-      name2={"Avocado Pesto Salad"} 
-      description3={"“Home-grown vegetables with loads of avocado, topped with mouthwatering pesto salad”"}
-      />
-      <MenuTile 
-      image1={"https://www.recipetineats.com/wp-content/uploads/2023/05/Garlic-cheese-pizza_9.jpg"}
-      name2={"Triple Cheese Pizza"} 
-      description3={"“Indulge yourself in this simple yet delicious delicacy”"}
-      />
-      <MenuTile 
-      image1={"https://images.theconversation.com/files/525691/original/file-20230511-19-w9pz4k.jpg?ixlib=rb-1.1.0&rect=5%2C2%2C1905%2C1276&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip"} 
-      name2={"Seasonal Wine"} 
-      description3={"“A great meal becomes perfect when combined with a good wine”"}
-      />
-      <MenuTile 
-      image1={"https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_512,h_512/https://www.adityabirlacapital.com/healthinsurance/active-together/wp-content/uploads/2019/12/How-Are-Espressos-Good-For-Health_blog-1.gif"} 
-      name2={"Coffee"} 
-      description3={"“The best coffee you can have from the land of Indonesia”"}
-      />
-
-</div>
+    {#each menus as menu}
+      <MenuTile image1={menu.image1} name2={menu.name2} description3={menu.description3}>
+      </MenuTile>
+    {/each}
+    
   </div>
-</body>
 
 <style>
   /** CSS Reset */
@@ -102,8 +103,8 @@
   }
 
   div.menu-area {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
 
@@ -129,7 +130,7 @@
 
   @media (min-width: 800px) {
     div.menu-area {
-      flex-direction: row;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     div.menu-row {
