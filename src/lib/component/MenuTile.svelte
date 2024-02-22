@@ -2,9 +2,11 @@
     export let image1: string;
     export let name2: string;
     export let description3: string;
+    export let label: string;
+    export let price: string;
 
 
-    
+
 </script>
 
 <div class="menu-tile">
@@ -15,6 +17,14 @@
     <div class="menu-tile-name">{name2}</div>
     <div class="menu-tile-description">
       {description3}
+    </div>
+    <div class="menu-price-row">
+      <span class="price-description">{label}</span>
+      <span>{price}</span>
+    </div>
+    <div class="menu-price-row">
+      <span class="price-description">{label}</span>
+      <span>{price}</span>
     </div>
 </div>
 
@@ -48,4 +58,16 @@
     height: 60px;
     padding-bottom: 16px;
   }
+  div.menu-price-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  span.price-description {
+    font-size: 12px;
+  }
+
 </style>
