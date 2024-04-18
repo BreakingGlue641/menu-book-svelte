@@ -1,184 +1,87 @@
-<script>
-  import MenuTile from '../lib/component/MenuTile.svelte';
-  const  menus = [
-    {
-      image1: "https://images.immediate.co.uk/production/volatile/sites/30/2014/05/Epic-summer-salad-hub-2646e6e.jpg?resize=960%2C503",
-      name2: "Avocado Pesto Salad" ,
-      description3: "“Home-grown vegetables with loads of avocado, topped with mouthwatering pesto salad”",
-      prices: [
-        {
-          label: " ",
-          price: 35
-        },
-        {
-          label: "+ Grilled Salmon ",
-          price: 55
-        }
-      ]
-    },
-    {
-      image1: "https://www.recipetineats.com/wp-content/uploads/2023/05/Garlic-cheese-pizza_9.jpg",
-      name2: "Triple Cheese Pizza" ,
-      description3: "“Indulge yourself in this simple yet delicious delicacy”",
-      prices: [
-        {
-          label: "1 Slice ",
-          price: 15
-        },
-        {
-          label: "Pan (6 slices)",
-          price: 60
-        }
-      ]
-    },
-    {
-      image1: "https://images.theconversation.com/files/525691/original/file-20230511-19-w9pz4k.jpg?ixlib=rb-1.1.0&rect=5%2C2%2C1905%2C1276&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip",
-      name2: "Seasonal Wine",
-      description3: "“A great meal becomes perfect when combined with a good wine”",
-      prices: [
-        {
-          label: "Glass ",
-          price: 100
-        },
-        {
-          label: "Bottle ",
-          price: 1500
-        }
-      ]
-    },
-    {
-      image1: "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_512,h_512/https://www.adityabirlacapital.com/healthinsurance/active-together/wp-content/uploads/2019/12/How-Are-Espressos-Good-For-Health_blog-1.gif",
-      name2: "Coffee",
-      description3: "“The best coffee you can have from the land of Indonesia”",
-      prices: [
-        {
-          label: "Americano ",
-          price: 25
-        },
-        {
-          label: "Latte ",
-          price: 30
-        }
-      ]
-    },
-  ];
-
+<script lang="ts">
+	import { totalOrderCount } from '$lib/store/order';
+	import MenuTile from '../lib/component/MenuTile.svelte';
+	import { menus } from '../lib/store/menu';
 </script>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=true>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&display=swap" rel="stylesheet">
-</head>
-
-  <div class="appbar">Kongkow Cafe</div>
-  <div class="hero"><img src="https://cdn.themistakenman.com/wp-content/uploads/2022/08/fast-food-business.webp"
-      alt="hero"></div>
-  <div class="header-text">
-    <div class="tagline">Friends, Food, Fun</div>
-    <div class="document-title">Kongkow Cafe Menu 2023</div>
-    <div class="price-note">All prices are in thousand rupiah</div>
-  </div>
-  <div class="menu-area">
-    {#each menus as menu}
-      <MenuTile image1={menu.image1} name2={menu.name2} description3={menu.description3}>
-      </MenuTile>
-    {/each}
-    
-  </div>
+<div class="appbar">Kongkow Cafe ({$totalOrderCount})</div>
+<div class="hero">
+	<img
+		src="https://cdn.themistakenman.com/wp-content/uploads/2022/08/fast-food-business.webp"
+		alt="hero"
+	/>
+</div>
+<div class="header-text">
+	<div class="tagline">Friends, Food, Fun</div>
+	<div class="document-title">Kongkow Cafe Menu 2023</div>
+	<div class="price-note">All prices are in thousand rupiah</div>
+</div>
+<div class="menu-area">
+	{#each $menus as menu}
+		<MenuTile
+			id={menu.id}
+			photoUrl={menu.photoUrl}
+			name={menu.name}
+			description={menu.description}
+			prices={menu.prices}
+		/>
+	{/each}
+</div>
 
 <style>
-  /** CSS Reset */
-  *,
-  html,
-  body {
-    font-family: 'Barlow';
-    margin: 0;
-    padding: 0;
-    color: #424242;
-  }
+	div.appbar {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		padding: 16px;
+		background-color: #f44336;
+		color: white;
+		font-size: 16px;
+		font-weight: 500;
+	}
 
-  body {
-    background-color: white;
-  }
+	div.hero img {
+		aspect-ratio: 2;
+		width: 100%;
+		object-fit: cover;
+	}
 
-  div.appbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 16px;
-    background-color: #f44336;
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-  }
+	div.header-text {
+		padding: 32px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 
-  div.hero img {
-    aspect-ratio: 2;
-    width: 100%;
-    object-fit: cover;
-  }
+	div.tagline {
+		font-size: 28px;
+	}
 
-  div.header-text {
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+	div.document-title {
+		font-size: 16px;
+		font-weight: 500;
+	}
 
-  div.tagline {
-    font-size: 28px;
-  }
+	div.price-note {
+		font-size: 12px;
+		margin-top: 8px;
+	}
 
-  div.document-title {
-    font-size: 16px;
-    font-weight: 500;
-  }
+	div.menu-area {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px;
+	}
 
-  div.price-note {
-    font-size: 12px;
-    margin-top: 8px;
-  }
+	@media (min-width: 600px) {
+		div.menu-area {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
 
-  div.menu-area {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  div.menu-row {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-  }
-
-
-
-  div.menu-price-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 16px;
-  }
-
-  span.price-description {
-    font-size: 12px;
-  }
-
-  @media (min-width: 600px) {
-    div.menu-area {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }}
-  @media (min-width: 800px) {
-    div.menu-area {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    div.menu-row {
-      flex: 1;
-    }
-  }
+	@media (min-width: 800px) {
+		div.menu-area {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
 </style>
