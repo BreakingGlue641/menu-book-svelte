@@ -11,7 +11,7 @@
 	$: counter = $order[id] ?? 0;
 
 	const add = () => {
-		$order[id] = $order[id] + 1;
+		$order[id] = counter + 1;
 	};
 
 	const substract = () => {
