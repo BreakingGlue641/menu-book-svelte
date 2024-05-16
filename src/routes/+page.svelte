@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { totalOrderCount } from '$lib/store/order';
+	import AppBar from '$lib/component/AppBar.svelte';
 	import MenuTile from '../lib/component/MenuTile.svelte';
 	import { menus } from '../lib/store/menu';
 </script>
 
-<div class="appbar">Kongkow Cafe ({$totalOrderCount})</div>
+<AppBar />
 <div class="hero">
 	<img
 		src="https://cdn.themistakenman.com/wp-content/uploads/2022/08/fast-food-business.webp"
@@ -29,17 +29,6 @@
 </div>
 
 <style>
-	div.appbar {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		padding: 16px;
-		background-color: #f44336;
-		color: white;
-		font-size: 16px;
-		font-weight: 500;
-	}
-
 	div.hero img {
 		aspect-ratio: 2;
 		width: 100%;

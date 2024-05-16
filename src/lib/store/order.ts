@@ -1,15 +1,11 @@
 import { derived, writable } from "svelte/store";
 
 export const order = writable<{ [key: string]: number }>({});
-
-// #1
+export const totalOrderValue = writable(0);
 export const totalOrderCount = derived(
     order,
-    (o) => {
-        return Object.values(o).reduce((prev, curr) => prev + curr , 0);
-    }
-)
-
+    (o) => Object.values(o).reduce((prev, curr) => prev + curr, 0)
+);
 
 // export const saladCounter = writable(0);
 // export const pizzaCounter = writable(0);

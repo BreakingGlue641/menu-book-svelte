@@ -29,12 +29,12 @@ export const menus = writable([
 		description: 'Indulge yourself in this simple yet delicious delicacy',
 		prices: [
 			{
-				id : 'pizza'
-				label: '1 slide',
+				id: 'slice',
+				label: '1 slice',
 				price: 15
 			},
 			{
-				id : 'pan'
+				id: 'pan',
 				label: 'Pan (6 slices)',
 				price: 60
 			}
@@ -48,12 +48,12 @@ export const menus = writable([
 		description: 'A great meal becomes perfect when combined with a good wine',
 		prices: [
 			{
-				id : 'glass'
+				id: 'glass',
 				label: 'Glass',
 				price: 100
 			},
 			{
-				id : 'bottle'
+				id: 'bottle',
 				label: 'Bottle',
 				price: 1500
 			}
@@ -67,12 +67,12 @@ export const menus = writable([
 		description: 'The best coffee you can have from the land of Indonesia',
 		prices: [
 			{
-				id : 'americano'
+				id: 'americano',
 				label: 'Americano',
 				price: 25
 			},
 			{
-				id : 'latte'
+				id: 'latte',
 				label: 'Latte',
 				price: 30
 			}
